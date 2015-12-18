@@ -1,3 +1,4 @@
+{% raw %}
 {% extends 'base.html' %}
 {% block title %}Page Title{% endblock title %}
 {% block main %}
@@ -7,3 +8,4 @@
         <h2>Hello, guest. please <a href="{{ url_for('auth.login') }}">login here</a>.</h2>
     {% endif %}
 {% endblock main %}
+{% endraw %}
