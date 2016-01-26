@@ -21,7 +21,7 @@ class Config(BaseConfig):
         self['ENVIRONMENT'] = env.lower()
 
         for fn in ('app', ):
-            config_file = os.path.join(root_path, 'config', '%s.yml' % fn)
+            config_file = os.path.join(root_path, '%s.yml' % fn)
 
             try:
                 with open(config_file) as f:

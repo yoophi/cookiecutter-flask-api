@@ -1,7 +1,7 @@
 from flask import render_template
 from flask.ext.login import current_user
 
-from sample.main import main
+from . import main
 
 
 @main.route('/', methods=['GET', 'POST'])

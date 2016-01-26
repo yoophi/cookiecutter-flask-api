@@ -1,8 +1,8 @@
 from flask import render_template, redirect, request, url_for
 from flask.ext.login import login_user, logout_user, current_user
-from sample.auth import auth
-from sample.models import db, User
-from sample.auth.forms import LoginForm, JoinForm
+from . import auth
+from ..models import db, User
+from ..auth.forms import LoginForm, JoinForm
 
 
 @auth.route('/login/', methods=['GET', 'POST'])

@@ -6,7 +6,7 @@ import os
 from flask.ext.script import Manager, Shell
 from flask.ext.migrate import Migrate, MigrateCommand
 
-from sample import create_app, db
+from {{cookiecutter.repo_name}} import create_app, db
 
 COV = None
 if os.environ.get('FLASK_COVERAGE'):

@@ -1,6 +1,6 @@
 from unittest import TestCase
-from sample import create_app
-from sample.models import db, User, Token
+from {{cookiecutter.repo_name}} import create_app
+from {{cookiecutter.repo_name}}.models import db, User, Token
 
 
 class TestUserModel(TestCase):

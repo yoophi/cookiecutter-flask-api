@@ -35,15 +35,15 @@ def create_app(config_name):
     login_manager.init_app(app)
     oauth.init_app(app)
 
-    from sample.main import main as main_blueprint
+    from .main import main as main_blueprint
 
     app.register_blueprint(main_blueprint)
 
-    from sample.auth import auth as auth_blueprint
+    from .auth import auth as auth_blueprint
 
     app.register_blueprint(auth_blueprint, url_prefix='/auth')
 
-    from sample.api_1_0 import api as api_1_0_blueprint
+    from .api_1_0 import api as api_1_0_blueprint
 
     app.register_blueprint(api_1_0_blueprint, url_prefix='/api/v1.0')
 

@@ -9,9 +9,9 @@ from datetime import datetime, timedelta
 from flask import request, render_template, jsonify, redirect
 from flask.ext.login import current_user, login_required
 
-from sample.api_1_0 import api
-from sample import oauth, db
-from sample.models import Client, Grant, User, Token
+from . import api
+from .. import oauth, db
+from ..models import Client, Grant, User, Token
 
 
 @oauth.clientgetter
