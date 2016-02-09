@@ -1,12 +1,14 @@
 #!/usr/bin/env python
 # coding: utf-8
-import os.path as op
+import os
 
+from flask import Flask
+
+from flask.ext.config_helper import Config
 from flask.ext.cors import CORS
 from flask.ext.login import LoginManager
 from flask.ext.oauthlib.provider import OAuth2Provider
 
-from .helpers import Flask
 from .models import db, User
 
 __version__ = '0.1'
@@ -15,6 +17,7 @@ login_manager = LoginManager()
 login_manager.session_protection = 'strong'
 login_manager.login_view = 'auth.login'
 
+config= Config()
 oauth = OAuth2Provider()
 cors = CORS()
 
@@ -25,10 +28,13 @@ def create_app(config_name):
 
     flask application generator
     """
-    template_folder = op.join(op.dirname(op.abspath(__file__)), 'templates')
+    template_folder = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'templates')
     app = Flask(__name__, template_folder=template_folder)
-    app.config.from_yaml(app.root_path)
-    app.config.from_heroku()
+    config.init_app(app)
+    app.config.from_yaml(config_name=config_name,
+                         file_name='app.yml',
+                         search_paths=[os.path.dirname(app.root_path)])
+    app.config.from_heroku(keys=['SQLALCHEMY_DATABASE_URI', ])
 
     cors.init_app(app)
     db.init_app(app)
